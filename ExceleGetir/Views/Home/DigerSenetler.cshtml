@@ -1,0 +1,13 @@
+﻿@model List<ExceleGetir.Models.EMANIFESTO_SATIRLAR>
+@{
+    ViewBag.Title = "SatırlarListele";
+}
+
+<h2>SatirlarListele</h2>
+
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>@item.KONTEYNER_NO</li>
+    }
+</ul>

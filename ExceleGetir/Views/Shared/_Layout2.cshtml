@@ -1,0 +1,314 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @*<link href="~/Content/Site2.css" rel="stylesheet" type="text/css" />*@
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+
+    <link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+    <style>
+        tfoot input {
+            width: 100%;
+            padding: 3px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div datatablepartial></div>
+    <div class="container-fluid">
+        @RenderBody()
+        <hr />
+        <button class="btn btn-warning btn-sm" id="editbtn" style="font-size:15px" data-id="" add-button>
+            <i class="fas fa-pencil-alt">
+            </i>
+            Ekle
+        </button>
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+
+    </div>
+    <script src="~/Content/jquery-3.5.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+    <div id="guncellemepartial"></div>
+    <script>
+
+
+        $(document).ready(function () {
+            // Setup - add a text input to each footer cell
+            //$('#myTable tfoot th').each(function () {
+            //    var title = $(this).text();
+            //    $(this).html('<input type="text" placeholder=" ' + title + '" />');
+            //});
+
+            //datatable kolonları
+            var columns = [
+                { "data": "id", "name": "", "autoWidth": true },
+                { "data": "musteradi", "name": "", "autoWidth": true },
+                { "data": "vergino", "name": "", "autoWidth": true },
+                { "data": "vergidairesi", "name": "", "autoWidth": true },
+                { "data": "txtcountry", "name": "", "autoWidth": true },
+                { "data": "il", "name": "", "autoWidth": true },
+                { "data": "ilce", "name": "", "autoWidth": true },
+                { "data": "tel", "name": "", "autoWidth": true },
+                { "data": "txtemail", "name": "", "autoWidth": true },
+                { "data": "adres", "name": "", "autoWidth": true },
+                { "data": "txtnotes", "name": "", "autoWidth": true },
+                { "data": "BLAddedUserName", "name": "", "autoWidth": true },
+                {
+                    "data": "BLAddedDate", "name": "", "autoWidth": true,
+                    "render": function (data, type, row) {
+                        return ConvertJsonDateString(data);
+                    }
+                },
+                { "data": "BLAddedUpdateName", "name": "", "autoWidth": true },
+                {
+                    "data": "BLUpdatedDate", "name": "", "autoWidth": true,
+                    "render": function (data, type, row) {
+                        return ConvertJsonDateString(data);
+                    }
+                }
+            ];
+
+            // DataTable
+            var table = $("#myTable").DataTable({
+                "destroy": true,
+                scrollX: true,
+                "serverside": true,
+                "ajax": {
+                    "url": "/BlackList/BlacklistDatas",
+                    "type": "GET",
+                    "datatype": "json"
+                },
+                "columns": columns,
+                "createdRow": function (row, data, dataIndex) {
+                    $(row).attr('data-id', data["id"]);
+
+                },
+                order: [[0, "desc"]]
+            });
+            //Datatable yenileme fonksiyonu(bunun çalışması için yukarda destroy true olmak zorunda)
+            function refreshData() {
+                table.ajax.reload();
+            }
+            //Yeni blacklist notu ekleme butonu
+            $(document).delegate("[addnewnote]", "click", function () {
+                //Serialize the form datas.
+                var valdata = $("#addnote_frm").serialize();
+                var id;
+                $.ajax({
+                    url: "/BlackList/AddNewNote",
+                    type: "POST",
+                    dataType: 'json',
+                    success: function (sonuc) {
+                        if (sonuc == "OK") {
+                            id = $("[noteid]").attr("value");
+                            $.confirm({
+                                title: 'Alert!',
+                                content: 'New blacklist note added',
+                                autoClose: 'OK|5000',
+                                buttons: {
+
+                                    OK: function () {
+                                    }
+                                }
+                            });
+                            $("#notespartial").load("/BlackList/GetNotesPartial?id=" + id, function (response, status, xhr) {
+                                if (status != "success") {
+                                    alert("Başarısız");
+                                }
+                            });
+                            $("#addnote_frm").trigger("reset");
+                        }
+                    },
+                    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                    data: valdata
+                });
+
+            });
+
+            var BLStatus;
+            //Save butonuna basarak firmayı hem güncelleme hem ekleme kısmı
+            $(document).delegate("[addtoblacklist]", "click", function () {
+
+
+                var valdata = $("#add_frm").serializeArray();
+
+
+                BLStatus = $('#BLStatus:checkbox:checked').val();
+                BLvalues = 0;
+
+                if (BLStatus != 'on') {
+
+                    valdata.push({
+                        name: "Adreskart.BLStatus",
+                        value: 0
+                    });
+
+                } else {
+
+
+                    valdata.forEach(function (part, index, theArray) {
+                        //theArray[index] = "hello world";
+
+                        if (part.name == "BLStatus") {
+                            valdata.splice(index, 1);
+                        }
+
+                        if (part.name=="id") {
+                            valdata.splice(index, 1);
+                        }
+
+                    });
+
+                    valdata.push({
+                        name: "Adreskart.BLStatus",
+                        value: 1
+                    });
+
+                    valdata.push({
+                        name: "Adreskart.id",
+                        value: $("[noteid]").val()
+                    });
+
+
+                }                               
+                $.ajax({
+                    url: "/BlackList/AddToBlackList",
+                    type: "POST",
+                    dataType: 'json',
+                    "destroy": true,
+                    success: function (data) {
+
+                        console.log(data);
+                        if (data.sonuc == "OK") {
+                            $("#notemenu").css('display', '');                                         
+                            $("[noteid]").val(data.Id)
+
+                            $.confirm({
+                                title: 'Alert!',
+                                content: 'New firm added to blacklist',
+                                autoClose: 'OK|5000',
+                                buttons: {
+
+                                    OK: function () {
+                                    }
+                                }
+                            });
+                            $("[firstnotemenu]").removeClass("nav-link active").addClass("nav-link");
+                            $("[secondnotemenu]").removeClass("nav-link").addClass("nav-link active");
+                            $("[firstnotemenu2]").removeClass("tab-pane fade active show").addClass("tab-pane fade");
+                            $("[secondnotemenu2]").removeClass("tab-pane fade").addClass("tab-pane fade active show");
+                            refreshData();
+                        }
+                        if (data.sonuc == "Updated") {
+                            $("#notemenu").css('display', '');
+                             
+
+                            $.confirm({
+                                title: 'Alert!',
+                                content: 'Firm updated',
+                                autoClose: 'OK|5000',
+                                buttons: {
+
+                                    OK: function () {
+                                    }
+                                }
+                            });
+                            $("[firstnotemenu]").removeClass("nav-link active").addClass("nav-link");
+                            $("[secondnotemenu]").removeClass("nav-link").addClass("nav-link active");
+                            $("[firstnotemenu2]").removeClass("tab-pane fade active show").addClass("tab-pane fade");
+                            $("[secondnotemenu2]").removeClass("tab-pane fade").addClass("tab-pane fade active show");
+                            refreshData();
+                        }
+                    },
+
+                    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                    data: valdata
+                });
+
+            });
+
+            //Datatable da hücreye çift tıklayıp modal açma
+            $('#myTable').on('dblclick', 'tr', function (e) {
+
+                var rowID = $(this).attr("data-id");
+                /*('#myTable').rows('#' + rowID).select()*/
+                /*alert(rowID);*/
+                $("#guncellemepartial").load("/BlackList/partialcagir?id=" + rowID, function (response, status, xhr) {
+                    if (status == "success") {
+
+                        $("#modal-warning").modal('show')
+
+                        $("#notespartial").load("/BlackList/GetNotesPartial?id=" + rowID, function (response, status, xhr) {
+                            if (status != "success") {
+                                alert("Başarısız");
+                            }
+                        });
+                    }
+                    else {
+                        alert("Başarısız");
+                    }
+                });
+            })
+            //Yeni Kayıt ekleme butonu, datatable altında
+            $("[add-button]").click(function () {
+                var id = 0;//$(this).data("id");
+                $("#guncellemepartial").load("/BlackList/partialcagir?id=" + id, function (response, status, xhr) {
+                    if (status == "success") {
+
+                        $("#modal-warning").modal('show')
+
+                        if ($("#notemenu").data("notemenu") == 1) {
+
+                            $("#notemenu").css('display', 'none');
+
+                        } else {
+                            $("#notemenu").css('display', '');
+                        }
+
+                    }
+                    else {
+                        alert("Başarısız");
+                    }
+                });
+            })
+
+            //Not görüntüleme
+            $(document).delegate(".detailbutton", "click", function () {
+
+
+
+                var notedetail = $(this).parent().parent().find(".notedetail").data("id");
+                //alert(notedetail);
+                $(".modal-body").find("#fill").text(notedetail);
+            });
+
+        });
+        //Datatable'da tarihi düzeltme
+        function ConvertJsonDateString(jsonDate) {
+            var shortDate = null;
+            if (jsonDate) {
+                var regex = /-?\d+/;
+                var matches = regex.exec(jsonDate);
+                var dt = new Date(parseInt(matches[0]));
+                var month = dt.getMonth() + 1;
+                var monthString = month > 9 ? month : '0' + month;
+                var day = dt.getDate();
+                var dayString = day > 9 ? day : '0' + day;
+                var year = dt.getFullYear();
+                shortDate = dayString + '.' + monthString + '.' + year;
+            }
+            return shortDate;
+        };
+    </script>
+
+</body>
+</html>

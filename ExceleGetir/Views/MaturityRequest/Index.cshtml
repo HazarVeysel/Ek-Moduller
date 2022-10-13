@@ -1,0 +1,519 @@
+﻿@model List<ExceleGetir.Controllers.MaturityRequestController.MaturityRequestView>
+@{
+    Layout = null;
+    int usid = 3;
+    string color = "";
+    //Not:E n düşük yetkili user için 1, En üst yetkili müdür için 3 kullanıyoruz. Bu daha sonra sistemdeki user'ın yetki numarası olacak
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @*<link href="~/Content/Site2.css" rel="stylesheet" type="text/css" />*@
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+
+    <link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+
+</head>
+<body>
+    <div class="container-fluid">
+        <section class="content">
+            <!-- Default box -->
+            <div class="card">
+                <div class="card-header clearfix">
+                    <h3 class=" float-xl-left">Requests</h3>
+                </div>
+                <div class="card-body p-0">
+                    <table class="table table-striped projects">
+                        <thead>
+                            <tr>
+                                <th style="width: 1%">
+                                    ID
+                                </th>
+                                <th style="width: 14%">
+                                    Firm Name
+                                </th>
+                                @if (usid == 3)
+                                {
+                                    <th style="width: 10%">
+                                        Requier
+                                    </th>
+                                }
+                                <th style="width:8%">Requested Days</th>
+                                <th style="width: 15%">
+                                    Request Description
+                                </th>
+                                <th style="width: 8%">
+                                    <span>Create Date</span>
+                                </th>
+                                <th style="width: 8%">
+                                    <span>Response Date</span>
+                                </th>
+
+                                <th style="width: 9%" class="text-center">
+                                    Approval Status
+                                </th>
+                                <th style="width: 6%" class="text-center">
+                                    Activity
+                                </th>
+                                <th style="width: 10%">
+                                </th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr datareq-id="@item.RequestId">
+                                    <td>
+                                        @item.RequestId
+                                    </td>
+                                    <td>
+                                        <a>
+                                            @item.CompanyName
+                                        </a>
+
+                                    </td>
+                                    @if (usid == 3)
+                                    {
+                                        <td>
+                                            <img alt="A" class="table-avatar" src="../../dist/img/avatar.png"> @*@item.RequirerUserId*@Veysel Hacı Hazar
+                                        </td>
+                                    }
+                                    <td class="text-center">@item.RequestedDays</td>
+                                    <td>
+                                        @if (item.Description.Length >= 25)
+                                        {
+                                            <span>@item.Description.Substring(0, 25)...</span>}
+                                        else
+                                        {
+                                            <span>@item.Description</span>
+                                        }
+                                        <br />
+                                        <small>
+                                            <button class="btn btn-link" descbutton>
+                                                <i class="fas fa-pencil-alt">
+                                                </i>
+                                                View
+                                            </button>
+                                        </small>
+                                    </td>
+                                    <td>@item.RequestDate</td>
+                                    <td class="project-state text-center">
+                                        @if (item.ApprovedDate == null)
+                                        {
+                                            color = "badge badge-warning";<span class="@color" style="font-size:15px">Waiting</span>}
+                                        else
+                                        {<span>@item.ApprovedDate</span>}
+                                    </td>
+                                    <td class="project-state  text-center aprsts">
+                                        @if (item.ApprovalStatus == 0)
+                                        {
+                                            color = "badge badge-danger";
+                                            <span class="@color" style="font-size:15px">
+                                                <span>Refused</span>
+                                            </span>}
+                                        @if (item.ApprovalStatus == null)
+                                        {
+                                            color = "badge badge-warning waiting";<span class="@color" style="font-size:15px">
+                                                <span>Waiting</span>
+                                            </span>}
+                                        @if (item.ApprovalStatus == 1)
+                                        {
+                                            color = "badge badge-success";<span class="@color" style="font-size:15px">
+                                                <span>Approved</span>
+                                            </span>}
+
+                                        @if (item.ApprovalStatus == 0)
+                                        {
+                                            
+                                        <br />
+                                        <small>
+                                            <button class="btn btn-info btn-sm" messagebutton>
+                                                <i class="fas fa-pencil-alt">
+                                                </i>
+                                                View Message
+                                            </button>
+                                        </small>
+                                        }
+                                    </td>
+
+
+                                        <td class="project-state text-center ">
+                                            <span class="text-center activity">@Html.Raw(item.ActivityStatus == true ? "<span class='badge badge-success' style='font-size:15px' >Active</span>" : "<span class='badge badge-danger' style='font-size:15px'>Passive</span>")</span>
+                                        </td>
+                                        <td class="project-actions text-right row px-1">
+                                            @*<a class="btn btn-primary btn-sm" href="#">
+                                                    <i class="fas fa-folder">
+                                                    </i>
+                                                    View
+                                                </a>*@
+                                            @if (usid == 1 && item.ActivityStatus==true)
+                                            {
+                                                <button class="btn btn-info btn-sm" editbutton>
+                                                    <i class="fas fa-pencil-alt">
+                                                    </i>
+                                                    Edit
+                                                </button>
+                                                if (item.ActivityStatus != false && item.ApprovedDate==null && item.ApprovalStatus==null)
+                                                {
+                                                    <button class="btn btn-danger btn-sm" revokebutton>
+                                                        <i class="fas fa-unlock-alt">
+                                                        </i>
+                                                        Revoke
+                                                    </button>
+                                                }
+                                            }
+                                            @if (usid == 3 && item.ApprovalStatus==null)
+                                            {
+                                                <button class="btn btn-info btn-sm approvebutton" approvebutton>
+                                                    <i class="fas fa-pencil-alt">
+                                                    </i>
+                                                    Approve
+                                                </button>
+                                                <button class="btn btn-danger btn-sm declinebutton" declinebutton>
+                                                    <i class="fas fa-trash">
+                                                    </i>
+                                                    Decline
+                                                </button>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+
+        </section>
+
+
+    </div>
+
+    <button class="btn btn-warning float-right" id="editbtn" style="font-size:20px; float:right" data-id="" add-button>
+        <i class="fas fa-plus">
+        </i>
+        Add Request
+    </button>
+
+    <footer>
+        <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+    </footer>
+    <script src="~/Content/jquery-3.5.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+    <div id="updatepartial"></div>
+    <div id="requestspartial"></div>
+    <div id="messagepartial"></div>
+    <div id="descriptionpartial"></div>
+    <div id="declinepartial"></div>
+    <script>
+
+        $(document).ready(function () {
+
+            //$("[requests-button]").click(function () {
+            //    var id = 0;//$(this).data("id");
+            //    $("#requestspartial").load("/MaturityRequest/RequestListByUser?userid=" + 3, function (response, status, xhr) {
+            //        if (status != "success") {
+            //            alert("Başarısız");
+            //        }
+            //    });
+            //})
+            $("[descbutton]").click(function () {
+                var reqid = $(this).closest("[datareq-id]").attr("datareq-id");
+                /*alert(reqid);*/
+                $("#descriptionpartial").load("/MaturityRequest/GetDescriptionPartial?id=" + reqid, function (response, status, xhr) {
+                    if (status == "success") {
+
+                        $("#modal-desc").modal('show')
+                        
+                    }
+                    else {
+                        alert("Başarısız");
+                    }
+                });
+            })
+
+            $("[approvebutton]").click(function () {
+
+                var onclickedbutton = $(this);
+
+                //console.log(onclickedbutton);
+
+                var reqid = $(this).closest("[datareq-id]").attr("datareq-id");
+                //alert(reqid);
+                $.ajax({
+                    url: "/MaturityRequest/ApproveRequest?id=" + reqid,
+                    type: "POST",
+                    success: function (data) {
+
+                        if (data.sonuc == "Approved") {
+
+
+                           onclickedbutton.parent().find(".declinebutton").hide();
+                            onclickedbutton.hide();
+                            onclickedbutton.parent().parent().find(".activity").text("Passive").addClass("badge badge-danger").css({
+                                fontSize: 15
+                            });
+                            onclickedbutton.parent().parent().find(".waiting").text("Approved").removeClass().addClass("badge badge-success").css({
+                                fontSize: 15
+                            });
+
+                            $.confirm({
+                                title: 'Alert!',
+                                content: 'Request is approved',
+                                autoClose: 'OK|5000',
+                                buttons: {
+
+                                    OK: function () {
+                                    }
+                                }
+                            });
+                        }
+                        if (data.sonuc != "Approved") {
+
+
+
+                            $.confirm({
+                                title: 'Alert!',
+                                content: 'Request could not ppproved',
+                                autoClose: 'OK|5000',
+                                buttons: {
+
+                                    OK: function () {
+                                    }
+                                }
+                            });
+
+                        }
+                    },
+
+                    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+
+                });
+            })
+
+            
+
+            $("[messagebutton]").click(function () {
+                var reqid = $(this).closest("[datareq-id]").attr("datareq-id");
+                /*alert(reqid);*/
+                $("#messagepartial").load("/MaturityRequest/GetMessagePartial?id=" + reqid, function (response, status, xhr) {
+                    if (status == "success") {
+
+                        $("#modal-def").modal('show')
+                        $("#messagemodal").find('#fill').text()
+                    }
+                    else {
+                        alert("Başarısız");
+                    }
+                });
+            })
+
+
+            $("[revokebutton]").click(function () {
+
+                var tiklananButon = $(this);
+
+                console.log(tiklananButon);
+
+                var reqid = $(this).closest("[datareq-id]").attr("datareq-id");
+                alert(reqid);
+                $.ajax({
+                    url: "/MaturityRequest/RevokeRequest?id=" + reqid,
+                    type: "POST",
+                    success: function (data) {
+
+                        if (data.sonuc == "Deleted") {
+
+                            tiklananButon.hide();
+
+
+                            $.confirm({
+                                title: 'Alert!',
+                                content: 'Request is revoked',
+                                autoClose: 'OK|5000',
+                                buttons: {
+
+                                    OK: function () {
+                                    }
+                                }
+                            });
+                        }
+                        if (data.sonuc != "Deleted") {
+
+
+
+                            $.confirm({
+                                title: 'Alert!',
+                                content: 'Request could not delete',
+                                autoClose: 'OK|5000',
+                                buttons: {
+
+                                    OK: function () {
+                                    }
+                                }
+                            });
+
+                        }
+                    },
+
+                    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+
+                });
+            })
+
+            $("[editbutton]").click(function () {
+                var reqid = $(this).closest("[datareq-id]").attr("datareq-id");
+                alert(reqid);
+                $("#updatepartial").load("/MaturityRequest/GetFormByRequest?id=" + reqid, function (response, status, xhr) {
+                    if (status == "success") {
+
+                        $("#modal-warning").modal('show')
+                    }
+                    else {
+                        alert("Başarısız");
+                    }
+                });
+            })
+
+
+            $("[add-button]").click(function () {
+                var id = 0;//$(this).data("id");
+                $("#updatepartial").load("/MaturityRequest/GetFormPartial?id=" + 6, function (response, status, xhr) {
+                    if (status == "success") {
+
+                        $("#modal-warning").modal('show')
+                    }
+                    else {
+                        alert("Başarısız");
+                    }
+                });
+            })
+
+
+            $(document).delegate("[sendrequest]", "click", function () {
+
+
+                var valdata = $("#addreq_frm").serialize();
+
+                $.ajax({
+                    url: "/MaturityRequest/AddMaturityRequest",
+                    type: "POST",
+                    dataType: 'json',
+                    success: function (data) {
+
+                        if (data.sonuc == "OK") {
+                            $("[reqid]").val(data.Id)
+                            $.confirm({
+                                title: 'Alert!',
+                                content: 'New request sent. You can still edit this request and press the save button.',
+                                autoClose: 'OK|5000',
+                                buttons: {
+
+                                    OK: function () {
+                                    }
+                                }
+                            });
+                        }
+                        if (data.sonuc == "Edited") {
+
+
+
+                            $.confirm({
+                                title: 'Alert!',
+                                content: 'Request edited',
+                                autoClose: 'OK|5000',
+                                buttons: {
+
+                                    OK: function () {
+                                    }
+                                }
+                            });
+
+                        }
+                    },
+
+                    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                    data: valdata
+                });
+
+            });
+            var clikcbtn;
+            $("[declinebutton]").click(function () {
+                clikcbtn = $(this);
+                var reqid = $(this).closest("[datareq-id]").attr("datareq-id");
+                alert(reqid);
+                $("#declinepartial").load("/MaturityRequest/GetDeclinePartial?id=" + reqid, function (response, status, xhr) {
+                    if (status == "success") {
+
+                        $("#modal-decline").modal('show')
+                        
+                    }
+                    else {
+                        alert("Başarısız");
+                    }
+                });
+            })
+
+
+            $(document).delegate("[declinerequest]", "click", function () {
+
+
+                var valdata = $("#dec_req_frm").serialize();
+
+                $.ajax({
+                    url: "/MaturityRequest/DeclineMaturityRequest",
+                    type: "POST",
+                    dataType: 'json',
+                    success: function (data) {
+
+                        
+                        if (data.sonuc == "Declined") {
+                            clikcbtn.parent().find(".approvebutton").hide();
+                            clikcbtn.hide();
+                            clikcbtn.parent().parent().find(".activity").text("Passive").addClass("badge badge-danger").css({
+                                fontSize: 15
+                            });
+                            clikcbtn.parent().parent().find(".waiting").text("Refused").removeClass().addClass("badge badge-danger").css({
+                                fontSize: 15
+                            });
+                            //var r = $('<button class="btn btn-info btn-sm" messagebutton><i class="fas fa-pencil-alt"></i>View Message</button> ');
+                            //var kutu = clikcbtn.parent().parent().find(".aprsts");
+                            //kutu.append(r);
+                            
+                            $.confirm({
+                                title: 'Alert!',
+                                content: 'Request declined by you',
+                                autoClose: 'OK|5000',
+                                buttons: {
+
+                                    OK: function () {
+                                    }
+                                }
+                            });
+
+                        }
+                    },
+
+                    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                    data: valdata
+                });
+
+            });
+
+
+        });
+
+    </script>
+</body>
+</html>

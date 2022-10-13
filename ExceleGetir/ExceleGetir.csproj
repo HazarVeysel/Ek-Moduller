@@ -1,0 +1,1164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{74C0F1C7-4AB2-448D-84BB-46000D7ECACD}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ExceleGetir</RootNamespace>
+    <AssemblyName>ExceleGetir</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44305</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ClosedXML, Version=0.96.0.0, Culture=neutral, PublicKeyToken=fd1eb21b62ae805b, processorArchitecture=MSIL">
+      <HintPath>..\packages\ClosedXML.0.96.0\lib\net46\ClosedXML.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.16.0.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.16.0\lib\net46\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelNumberFormat, Version=1.1.0.0, Culture=neutral, PublicKeyToken=23c6f5d73be07eca, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelNumberFormat.1.1.0\lib\net20\ExcelNumberFormat.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\BirDigerController.cs" />
+    <Compile Include="Controllers\BlackListController.cs" />
+    <Compile Include="Controllers\MaturityRequestController.cs" />
+    <Compile Include="Entities\MaturityRequest.cs" />
+    <Compile Include="Entities\AdresKart.cs" />
+    <Compile Include="Models\AdresKartlari_Result.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\almanya.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Models\DegerListesi_Result.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DENIZPOZISYONLAR.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ExcelDb.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExcelDb.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ExcelDb.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ExcelDb.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExcelDb.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FaturaDetay.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FaturaMaster.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\fnSplit_Result.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetHierarchy_Result.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Instant_Invoices_Result.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KalemListesi_Result.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LISTE.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LocationsList_Result.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MGL_STATUS_Result.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PAZARLAMAISTATISTIK.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EMANIFESTO_SATIRLAR.cs" />
+    <Compile Include="Models\EMANIFESTO_SENETLER.cs" />
+    <Compile Include="Models\Tbl_AdresKartlari.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_BlacklistNotes.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_MaturityRequests.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Models\ReplaceBlLoad_Result.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SOFTCARI.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ExpectedProfiteport_Result.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_AccountDocuments.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_AgentContacts.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_AgentNetworks.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Agents.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Airlines.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_AirportCountries.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Airports.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_AirportsWCountry.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_AirportWCountryCode.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TBL_ALLFREIGHT_LOADS.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_AracEvraklar.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_AracKontrolleri.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Araclar.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_AracSoforler.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Authority.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_AuthorizeUsers.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_BABS_Approve.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_BABS_Approve_Authority.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_BankDetails.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Branches.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_BudgetExpectations.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_BudgetExpects.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Budget_Locking.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Budget_Shared_Codes.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_BulkComm.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Calendar.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_CalendarEvents.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_CalisanToplamlari.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_CariVadeler.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_City.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_CntrDailyEvents.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_CntrTracking.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_CntrTracking_Locations.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TBL_CNTR_LOADS.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_CombinedList.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_COMBINED_INVOICES.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Contacts.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_ContainerEvents.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Container_Codes.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Counter_Templates.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Countries.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_CrmMenu.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_CustomerTotalsByMonth.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Customer_Address_Book.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Customer_Contacts.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Customer_Variables.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_DamgaPulu.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Degerler.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_DemirbasKalemleri.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Demirbaslar.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_DemurajFiyatlari.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Demuraj_Tarifeleri.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Denizyolu_Ticari.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_DepoMuhasebeHesaplari.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_DofForms.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_DovizKurlari.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_EInvoice.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_EInvoiceGB.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_EInvoicePK.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Employee_Hierarchy.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Envanter.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_EvrakArsiv.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_EvrakIcerikler.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_EvrakIstipi.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Evraklar.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_EvrakSablonIstipi.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_EvrakSablonlari.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_EvrakSablonTurleri.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_EvrakTaramalari.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_EvrakTurleri.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_FaturaPozisyonlar.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_FaturaSayaclar.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_FaturaTalimatlari.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_FaturaView.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Firmalar.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_FlexiView.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Flexi_Seri.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_FreightRequest.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_FreightRequestResponse.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_FreightRequestResponseItems.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_GemiCikis.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_GemiVaris.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_GiderKalemleri.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_GoruntulenenEvraklar.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_GorusmeBilgilendirme.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_GroupAdmins.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_HavaFirmalari.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_HavaKonteyner.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_HavaLoads.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_HavaPozisyonlar.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_HavaRezervasyonlar.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Havayolu_Seri.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_HsCodes.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Infinity_Menu.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Inform_Company.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_InlandAgency.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TBL_INTRA_TRACKING.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_InttraBC.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Inttra_Transactions.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_IsAkisMerkezi.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_isotank.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_IsoTankStock.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_isotank_history.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Kalemler.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_KaraKonteyner.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_KaraLoads.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_KaraPozisyonlar.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_KayitliTarifeler.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_KayitliTeklifKalemleri.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_KoliBilgileri.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Konteyner.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_KullaniciEvraklari.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_KullaniciMuhasebeKodlari.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_KullaniciOzet_Result.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_KullaniciRaporGruplari.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Kunye_Paket.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Kunye_Prim_Oranlar.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Kunye_User_Match.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Limanlar.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TBL_LINE_TEU_REPORT.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_LoadingPlaces.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Loads.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TBL_LOADTRACKING.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Locations.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_LocationView.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_LogoGiderler.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Logo_Donemler.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Logs.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TBL_MAG_AKT_HATA.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_MailGroups.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_MailSetup.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_MalzemeListesi.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_MarketingTotalsByMonth.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Marketing_Report.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Masraflar.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Mawb_Stok.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_MCode_Request.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_MeetingCustomer.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Meetings.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_MeetingStaff.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Menu.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Menus.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Messenger.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Moduls.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Monthly_Loads_Result.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_MontlySales.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_MontlySalesByPersonelID.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_MT_Vessels.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_MT_Vessels_Locations.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_MuhasebeSayaclar.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Notifier.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_OdemeTalimatlari.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_OffDateForms.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_OffDates.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_OnayListesi.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Operations_Report.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_OperationTotalsByMonth.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Overseas_Invoice.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Package_Types.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_PendingList.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_PersonelGorevTanimlari.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Pivot.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_PivotFingers.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_PortAgency.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_PortAgencyLocations.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_PortRoutes.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Ports.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TBL_POS_LOADS.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_PozisyonKalemleri.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Pozisyonlar.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TBL_POZKALEM_FILTRE.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_ProfitByCountry.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_ProfitByCountry_Operations.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_ProjectFollowList.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_ProjePozisyonlar.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_ProjeTasimalari.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Proje_All.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Purchase_Forms.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Purchase_Items.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Purchase_Types.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Quotes.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Quote_Cargo_Detail.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Quote_Expenses.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Required_Fields.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_ResmiTatiller.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_RezervasyonGecmisi.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_RezervasyonKalemleri.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_RezervasyonKonteyner.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Rezervasyon_Deniz.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_RezHavaKonteyner.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_RezHavaLoads.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_RezHavaPozisyonlar.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_RezKaraKonteyner.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_RezKaraLoads.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_RezKaraPozisyonlar.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_RezKonteyner.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_RezLoads.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_RezPozisyonlar.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_RezYukeBagliTerimler.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_SabitDegerler.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Sayaclar.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Scheduler.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Sectors.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_SeyahatFormlari.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_ShellToolbox.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_ShellView.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_ShippingLines.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Ships.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Spetta_Price.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_StokAirlineTotals.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_StokView.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Subeler.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_TankPositions.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_TankStock.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_TaranmisEvraklar.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_TarifeKalemleri.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_TarifeKonteyner.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Tarifeler.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_TarifeParsiyel.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Tariffs.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_TaxOffices.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_TeklifKalemleri.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_TeklifKonteyner.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Teklifler.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_TekliflerView.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_TeklifSartlari.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Terimler.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TBL_TOPCUSTOMERS.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TBL_TOPLIST.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_TrackingLogs.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_TrackingView.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_TradeItems.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Trades.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TBL_TRAXON_CONTACTS.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Traxon_Documents.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Traxon_Hbl.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Traxon_Hbl_Rows.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TBL_TRAXON_LIST.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Traxon_OtherCharges.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Traxon_OutBox.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Traxon_Rows.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Traxon_SPH_Codes.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_UserGroupMatches.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_UserGroupNames.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_UserPrinters.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Users.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_User_Competences.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_User_Individual_Goals.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_User_InOut.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_User_Performance.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_User_Performances_MatchTable.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_UyariMesajiGonderimleri.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_VersiyonBilgileri.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Vessels.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Virman.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_WebPivot.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_WebReports.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TBL_WEB_HBL.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_WeeklyOpr_Result.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Weekly_Visits.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_YildizliKalemler.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_YonetmeEslestirme.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_YukeBagliTerimler.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TerimListesi_Result.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Test.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TotalsByShipper.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\View_1.cs">
+      <DependentUpon>ExcelDb.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\jquery-3.5.1.js" />
+    <Content Include="Content\jquery.dataTables.min.css" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\jquery.dataTables.min.js" />
+    <Content Include="Content\Site2.css" />
+    <Content Include="Models\ExcelDb.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ExcelDb.Context.cs</LastGenOutput>
+      <DependentUpon>ExcelDb.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\ExcelDb.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ExcelDb.edmx</DependentUpon>
+      <LastGenOutput>ExcelDb.cs</LastGenOutput>
+    </Content>
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\ExcelDb.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ExcelDb.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\ExcelDb.edmx.diagram">
+      <DependentUpon>ExcelDb.edmx</DependentUpon>
+    </Content>
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\SenetlerListele.cshtml" />
+    <Content Include="Views\Home\DigerSenetler.cshtml" />
+    <Content Include="Views\BirDiger\Diger.cshtml" />
+    <Content Include="Views\BirDiger\ShipManifest.cshtml" />
+    <Content Include="Views\BlackList\AdresKartlariList.cshtml" />
+    <Content Include="Views\Shared\_Layout2.cshtml" />
+    <Content Include="Views\BlackList\_addtoblacklist.cshtml" />
+    <Content Include="Views\BlackList\_blnotes.cshtml" />
+    <Content Include="Views\BlackList\_BlackDataTable.cshtml" />
+    <Content Include="Views\MaturityRequest\Index.cshtml" />
+    <Content Include="Views\MaturityRequest\_FormPartial.cshtml" />
+    <Content Include="Views\MaturityRequest\_MessagePartial.cshtml" />
+    <Content Include="Views\MaturityRequest\_DeclinePartial.cshtml" />
+    <Content Include="Views\MaturityRequest\_DescriptionPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>65467</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44305/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

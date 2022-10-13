@@ -1,0 +1,13 @@
+﻿@model List<ExceleGetir.Models.EMANIFESTO_SENETLER>
+@{
+    ViewBag.Title = "SenetlerListele";
+}
+
+<h2>SenetlerListele</h2>
+
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>@item.SENET_NUMARASI</li>
+    }
+</ul>

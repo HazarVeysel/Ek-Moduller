@@ -1,0 +1,200 @@
+﻿@model ExceleGetir.Controllers.BlackListController.ViewModel
+<div class="modal fade" id="modal-warning" modal>
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-content">
+                <div class="modal-header bg-warning">
+                    <h4 class="modal-title">Add To Black List</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" xx>×</span>
+                    </button>
+                </div>
+                <ul class="nav nav-tabs" id="custom-content-below-tab" role="tablist">
+                    <li class="nav-item">
+                        <a firstnotemenu class="nav-link active" id="custom-content-below-home-tab" data-toggle="pill" href="#custom-content-below-home" role="tab" aria-controls="custom-content-below-home" aria-selected="true">Form</a>
+                    </li>              
+                        <li class="nav-item" data-notemenu="1" id="notemenu">
+                            <a secondnotemenu class="nav-link" id="custom-content-below-profile-tab" data-toggle="pill" href="#custom-content-below-profile" role="tab" aria-controls="custom-content-below-profile" aria-selected="false">Notes</a>
+                        </li>           
+                </ul>
+                <div class="tab-content" id="custom-content-below-tabContent">
+                    <div firstnotemenu2 class="tab-pane fade active show" id="custom-content-below-home" role="tabpanel" aria-labelledby="custom-content-below-home-tab">
+                        @using (Html.BeginForm("AddToBlackList", "BlackList", FormMethod.Post, new { @enctype = "multipart/form-data", @name = "add_frm", @id = "add_frm" }))
+                        {
+                            
+                     
+                        <input id="FirmId" name="id" type="hidden" value="@Model.Adreskart.id" />
+         
+
+                            <div class="modal-body">
+                                <div class="row">
+                                    
+                                    <div class="col-lg-9">
+                                        <!-- text input -->
+                                        <div class="form-group">
+                                            <label for="Musteri_Name">Firm Name</label>
+                                           
+                                                @Html.TextBoxFor(x => x.Adreskart.musteradi, new { @class = "form-control", @name = "Musteri_Name", @id = "Musteri_Name", @required = "true" })
+                                            
+                                            @*@Html.DropDownListFor(x => x.musteradi, (List<SelectListItem>)ViewBag.vlc, String.Empty, new { @class = "form-control" })*@
+
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="form-group">
+                                            <br />
+                                            <div class="input-group pt-2">
+                                               
+                                                    @*@Html.CheckBoxFor(x=>x.Adreskart.Onay==1 ? true : false, new { @checked = "checked" })*@
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">
+                                                 <input type="checkbox" id="BLStatus" name="BLStatus" @*@(Model.Adreskart.BLStatus == 1 ? "checked" : "")*@ checked required>
+                                                        </span>
+                                                    </div>
+                                                
+                                                <input type="text" class="form-control" placeholder="Blacklisted" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label for="txtcountry">Country</label>
+                                          
+                                                @Html.TextBoxFor(x => x.Adreskart.txtcountry, new { @class = "form-control", @name = "txtcountry", @id = "txtcountry", @required = "true" })
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label for="il">City</label>
+                                           
+                                                @Html.TextBoxFor(x => x.Adreskart.il, new { @class = "form-control", @name = "il", @id = "il", @required = "true" })
+                                           
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label for="ilce">District</label>
+                                                @Html.TextBoxFor(x => x.Adreskart.ilce, new { @class = "form-control", @name = "ilce", @id = "ilce" })
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label for="tel">Phone</label>
+                                           
+                                                @Html.TextBoxFor(x => x.Adreskart.tel, new { @class = "form-control", @name = "tel", @id = "tel" })
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label for="txtemail">Email</label>
+                                                @Html.TextBoxFor(x => x.Adreskart.txtemail, new { @class = "form-control", @name = "txtemail", @id = "txtemail" })
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label for="zipcode">Zip Code</label>
+                                                @Html.TextBoxFor(x => x.Adreskart.txtzipcode, new { @class = "form-control", @name = "zipcode", @id = "zipcode" })
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label for="vergino">Tax Id Number</label>
+                                                @Html.TextBoxFor(x => x.Adreskart.vergino, new { @class = "form-control", @name = "vergino", @id = "vergino" })
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label for="vergidairesi">Tax Office</label>
+                                                @Html.TextBoxFor(x => x.Adreskart.vergidairesi, new { @class = "form-control", @name = "vergidairesi", @id = "vergidairesi" })
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <div class="form-group">
+                                            <label for="adres">Addres</label>
+                                                @Html.TextBoxFor(x => x.Adreskart.adres, new { @class = "form-control", @name = "adres", @id = "adres" })
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <div class="form-group">
+                                            <label for="adres1">Addres 2</label>
+                                                @Html.TextBoxFor(x => x.Adreskart.adres1, new { @class = "form-control", @name = "adres1", @id = "adres1" })
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <label for="mersisno">Mersis No</label>
+                                                @Html.TextBoxFor(x => x.Adreskart.mersisno, new { @class = "form-control", @name = "mersisno", @id = "mersisno" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer justify-content-between">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                                
+                                <button type="button" class="btn btn-success" addtoblacklist >Save</button>
+                            </div>
+                        }
+                    </div>             
+                    <div secondnotemenu2 class="tab-pane fade" id="custom-content-below-profile" role="tabpanel" aria-labelledby="custom-content-below-profile-tab">
+
+                        @using (Html.BeginForm("AddNewNote", "BlackList", FormMethod.Post, new { @enctype = "multipart/form-data", @name = "addnote_frm", @id = "addnote_frm" }))
+                        {
+                            @*@Html.HiddenFor(x => x.Adreskart.id, new { @class = "form-control" })*@
+                            <input id="FirmId" name="FirmId" type="hidden" value="@Model.Adreskart.id"  noteID />
+                            @*@Html.Hidden(x => x.BlacklistNoteFirmId.FirmId, new { @class = "form-control", @value = 55, @id="FirmId", @name="FirmID"})*@
+                            <div class="row">
+                                <div class="col-sm-12 px-4">
+                                    <div class="form-group">
+                                        <label for="BlackListNote">Add New Black List Note</label>
+                                        <textarea class="form-control" rows="5" id="BlackListNote" name="BlackListNote" placeholder="Write detailed information about the problems with the company..." required></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer justify-content-between">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                                <button type="reset" class="btn btn-primary">Reset Form</button>
+                                <button type="button" class="btn btn-success" addnewnote>Add the Note</button>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 px-4 ">
+                                    <div class="form-group" style=" overflow-y: scroll; overflow-x: hidden; width: 100%; height: 277px;">
+                                        <label for="BLNotes">Previous Notes</label>
+                                        <!-- /_blnotes partial modal-content -->
+                                        <div id="notespartial"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>                    
+                </div>
+            </div>            
+        </div>
+    </div>
+</div>
+
+
+@*Not ekranı modalı*@
+ <div class="modal fade" id="modal-default">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-info">
+                <h4 class="modal-title">Details</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="background-color: antiquewhite; overflow-y: scroll; overflow-x: hidden; width: 100%; height: 350px;">
+                <p id="fill"></p>
+            </div>
+            <div class="modal-footer float-right" style="background-color:floralwhite">
+                <button type="button" class="btn btn-default btn-info text-center" data-dismiss="modal">Close</button>
+            </div>
+        </div>       
+    </div>
+</div>

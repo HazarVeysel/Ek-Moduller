@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32526.322
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExceleGetir", "ExceleGetir\ExceleGetir.csproj", "{74C0F1C7-4AB2-448D-84BB-46000D7ECACD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{74C0F1C7-4AB2-448D-84BB-46000D7ECACD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74C0F1C7-4AB2-448D-84BB-46000D7ECACD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74C0F1C7-4AB2-448D-84BB-46000D7ECACD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74C0F1C7-4AB2-448D-84BB-46000D7ECACD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7F257CCD-3D85-4EC2-9D23-2F634B2B1666}
+	EndGlobalSection
+EndGlobal

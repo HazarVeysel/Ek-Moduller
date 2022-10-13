@@ -1,0 +1,20 @@
+﻿@model ExceleGetir.Controllers.MaturityRequestController.MaturityRequestAndAdresKartlari
+<div class="modal fade" id="modal-def">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-info">
+                <h4 class="modal-title">Denial Message</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="messagemodal" style="background-color: antiquewhite; overflow-y: scroll; overflow-x: hidden; width: 100%; height: 350px;">
+                <p class="p-1" id="fill">@Model.MaturityRequest.DenialMessage</p>
+                <p class="p-1"><b>Decliner:</b> @Model.MaturityRequest.ApproverUserId</p>
+            </div>
+            <div class="modal-footer float-right" style="background-color:floralwhite">
+                <button type="button" class="btn btn-default btn-info text-center" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+﻿@model ExceleGetir.Controllers.MaturityRequestController.MaturityRequestAndAdresKartlari
+<div class="modal fade" id="modal-decline">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-info">
+                <h4 class="modal-title">Add Denial Message</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            @using (Html.BeginForm("AddMaturityRequest", "MaturityRequest", FormMethod.Post, new { @enctype = "multipart/form-data", @name = "dec_req_frm", @id = "dec_req_frm" }))
+            {
+                <input id="FirmId" name="MaturityRequest.FirmId" type="hidden" value="@Model.MaturityRequest.FirmId" />
+                <input id="RequestId" name="MaturityRequest.RequestId" type="hidden" value="@Model.MaturityRequest.RequestId" />
+                <input id="RequirerUserId" name="MaturityRequest.RequirerUserId" type="hidden" value="@Model.MaturityRequest.RequirerUserId" />
+                <input id="RequestDate" name="MaturityRequest.RequestDate" type="hidden" value="@Model.MaturityRequest.RequestDate" />
+                <input id="UpdatedDate" name="MaturityRequest.UpdatedDate" type="hidden" value="@Model.MaturityRequest.UpdatedDate" />
+                <input id="Description" name="MaturityRequest.Description" type="hidden" value="@Model.MaturityRequest.Description" />
+                <input id="RequestedDays" name="MaturityRequest.RequestedDays" type="hidden" value="@Model.MaturityRequest.RequestedDays" />
+                <div class="col-sm-12">
+
+
+                    <textarea class="form-control" rows="7" id="DenialMessage" name="MaturityRequest.DenialMessage" placeholder="Please write cause of declining." required></textarea>
+
+                </div>
+                <div class="modal-footer float-right" style="background-color:floralwhite">
+                    <button type="button" class="btn btn-default btn-block btn-secondary text-center" data-dismiss="modal" declinerequest>Decline Request</button>
+                </div>
+            }
+            </div>
+    </div>
+</div>

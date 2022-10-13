@@ -1,0 +1,97 @@
+﻿@model ExceleGetir.Controllers.MaturityRequestController.MaturityRequestAndAdresKartlari
+<div class="modal fade" id="modal-warning" modal>
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-content">
+                <div class="modal-header bg-warning">
+                    <h4 class="modal-title">Add Maturity Request</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" xx>×</span>
+                    </button>
+                </div>
+
+                <div class="tab-content" id="custom-content-below-tabContent">
+                    <div firstnotemenu2 class="tab-pane fade active show" id="custom-content-below-home" role="tabpanel" aria-labelledby="custom-content-below-home-tab">
+                        @using (Html.BeginForm("AddMaturityRequest", "MaturityRequest", FormMethod.Post, new { @enctype = "multipart/form-data", @name = "addreq_frm", @id = "addreq_frm" }))
+                        {
+
+                            if (Model.MaturityRequest != null)
+                            {
+                                <input id="FirmId" name="MaturityRequest.FirmId" type="hidden" value="@Model.MaturityRequest.FirmId" />}
+                            else
+                            {
+                                <input id="FirmId" name="MaturityRequest.FirmId" type="hidden" value="0" />
+                            }
+                            @*@Html.TextBoxFor(x => x.Adreskart.musteradi, new { @class = "form-control", @name = "Musteri_Name", @id = "Musteri_Name", @required = "true" })*@
+                            if (Model.MaturityRequest != null)
+                            {
+                                <input id="reqid" name="MaturityRequest.RequestId" type="hidden" reqid value="@Model.MaturityRequest.RequestId" />
+                            }
+                            else
+                            {
+                                <input id="RequestId" name="MaturityRequest.RequestId" type="hidden" reqid value="0" />
+                            }
+
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <!-- text input -->
+                                        <div class="form-group">
+                                            <label for="Musteri_Name">Firm Name</label>
+
+                                            @*@Html.TextBoxFor(x => x.Adreskart.musteradi, new { @class = "form-control", @name = "Musteri_Name", @id = "Musteri_Name", @required = "true" })*@
+                                            <input type="text" class="form-control" name="Musteri_Name" id="Musteri_Name" value="@Model.Adreskart.musteradi" readonly />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <!-- text input -->
+                                        <div class="form-group">
+                                            <label for="Musteri_Name">Requirer Name</label>
+                                            <input type="text" class="form-control" name="reqname" id="reqname" value="Veysel Hacı Hazar" readonly />
+
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <!-- text input -->
+                                        <div class="form-group">
+                                            <label for="RequestedDay">Requested Days</label>
+
+                                            @Html.DropDownListFor(x => x.MaturityRequest.RequestedDays, (List<SelectListItem>)ViewBag.valuedays, new { @class = "form-control" })
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label for="BlackListNote">Request Description</label>
+
+                                            @if (Model.MaturityRequest != null)
+                                            {
+                                                <textarea class="form-control" rows="7" id="Description" name="MaturityRequest.Description" placeholder="Please write the reasons for your request in detail" required>@Model.MaturityRequest.Description</textarea>
+                                            }
+                                            else
+                                            {
+                                                <textarea class="form-control" rows="7" id="Description" name="MaturityRequest.Description" placeholder="Please write the reasons for your request in detail" required></textarea>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer justify-content-between">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+
+                                <button type="button" class="btn btn-success" sendrequest>Send The Request</button>
+                            </div>
+                        }
+                    </div>
+                    <div secondnotemenu2 class="tab-pane fade" id="custom-content-below-profile" role="tabpanel" aria-labelledby="custom-content-below-profile-tab">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
